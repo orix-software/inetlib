@@ -1,2 +1,2 @@
 unsigned int htons(unsigned int hostshort);
-unsigned long inet_addr(const char *cp);
+unsigned char inet_aton(const char *cp, unsigned long *inp);

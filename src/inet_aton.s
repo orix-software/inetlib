@@ -1,15 +1,8 @@
 .include "telestrat.inc"
 
-.export inet_addr
-.export _inet_addr
+.export inet_aton
 
-
-.proc _inet_addr
-    ;;@proto inet_addr(const char *cp);
-
-.endproc
-
-.proc inet_addr
+.proc inet_aton
     ;;@brief Convert ip str to int 32, returns 255 255 255 255 if error
     ;;@inputA Low addr of string
     ;;@inputX high addr
@@ -20,6 +13,8 @@
     ;;@returnsA First byte
     ;;@returnsX Second byte
     ;;@returnsY Third byte
+    ;;@returnMEM_RES Last byte
+
     sta     RES
     stx     RES+1
 
