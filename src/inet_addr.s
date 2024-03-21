@@ -13,6 +13,10 @@
     ;;@brief Convert ip str to int 32, returns 255 255 255 255 if error
     ;;@inputA Low addr of string
     ;;@inputX high addr
+    ;;@modifyMEM_RESB
+    ;;@modifyMEM_RES
+    ;;@modifyMEM_TR0
+    ;;@modifyMEM_TR3
     ;;@returnsA First byte
     ;;@returnsX Second byte
     ;;@returnsY Third byte
@@ -40,9 +44,7 @@
     cpx     #$03
     beq     @error
 
-
 @out:
-
     rts
 
 @convert:
@@ -62,7 +64,6 @@
     jmp     @no_three_digit
 
 @is_not_200:
-
     stx     RESB+1
 
     lda     #100
@@ -74,8 +75,6 @@
 @no_three_digit:
     cpx     #02
     bne     @no_three_digit
-
-
     rts
 
 @error:
