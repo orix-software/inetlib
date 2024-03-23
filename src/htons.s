@@ -16,6 +16,8 @@
 
     lda     RES
 
-    rts
+    jmp     htons
+
+
 .endproc
 
