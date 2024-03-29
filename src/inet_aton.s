@@ -36,7 +36,7 @@
 
     sta     TR0,x
     inx
-    cpx     #$03
+    cpx     #$04
     beq     @error
     iny
     bne     @L1
