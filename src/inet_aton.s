@@ -31,7 +31,7 @@
     beq     @convert
     cmp     #'0'
     bcc     @error
-    cmp     #'9'
+    cmp     #':'
     bcs     @error
 
     sta     TR0,x
