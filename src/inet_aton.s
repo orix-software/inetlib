@@ -38,6 +38,7 @@
     inx
     cpx     #$03
     beq     @error
+    bne     @L1
 
 @out:
     rts
