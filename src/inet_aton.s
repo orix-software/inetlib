@@ -14,7 +14,8 @@
     ;;@returnsX Second byte
     ;;@returnsY Third byte
     ;;@returnMEM_RES Last byte
-
+@me:
+    jmp     inet_aton
     sta     RES
     stx     RES+1
 
