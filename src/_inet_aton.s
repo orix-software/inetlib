@@ -31,7 +31,7 @@
     lda     RES
     sta     (ptr1),y
 
-    lda     #$00
+    lda     #$01
 
     rts
 .endproc
