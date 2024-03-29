@@ -10,8 +10,8 @@
 .proc _inet_aton
     ;;@proto inet_aton(const char *cp, unsigned long *inp);
 
-    sta     ptr1        ; Ptr to store inp
-    stx     ptr1+1      ; ptr to store inp
+    sta     ptr1        ; Ptr to store int
+    stx     ptr1+1      ; ptr to store int
 
     jsr     popax
     sta     RES
@@ -31,6 +31,7 @@
     lda     RES
     sta     (ptr1),y
 
+    lda     #$00
 
     rts
 .endproc

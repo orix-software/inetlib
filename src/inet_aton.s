@@ -18,7 +18,6 @@
     sta     RES
     stx     RES+1
 
-
     ldx     #$00
     stx     RESB ; Current digit
 

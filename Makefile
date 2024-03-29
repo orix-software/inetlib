@@ -27,7 +27,7 @@ $(OBJECTS8): $(SOURCES8)
 	@mkdir -p build/lib8
 	@mkdir -p build/usr/include/arpa
 	@mkdir -p build/usr/include/asm
-	@cp src/include/inet.h build/usr/include/arpa/
+	@cp src/include/inetextend.h build/usr/include/arpa/
 	@cp inet.lib build/lib8/
 
 clean:
