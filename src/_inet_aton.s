@@ -14,8 +14,8 @@
     stx     ptr1+1      ; ptr to store int
 
     jsr     popax
-    sta     RES
-    stx     RES+1
+
+    ; A & X contains str
     jsr     inet_aton
 
     sty     RESB
