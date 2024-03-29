@@ -1,4 +1,4 @@
 *.o
-build/*
-libs/*
 *.lib
+build/
+
