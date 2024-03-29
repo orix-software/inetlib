@@ -38,6 +38,7 @@
     inx
     cpx     #$03
     beq     @error
+    iny
     bne     @L1
 
 @out:
