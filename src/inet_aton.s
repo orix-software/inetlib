@@ -10,10 +10,10 @@
     ;;@modifyMEM_RES
     ;;@modifyMEM_TR0
     ;;@modifyMEM_TR3
-    ;;@returnsA First byte
-    ;;@returnsX Second byte
-    ;;@returnsY Third byte
-    ;;@returnMEM_RES Last byte
+    ;;@returnsMEM_TR4 First byte
+    ;;@returnsMEM_TR5 Second byte
+    ;;@returnsMEM_TR6 Third byte
+    ;;@returnsMEM_TR7 Last byte
 
     sta     RES
     stx     RES+1
@@ -45,16 +45,17 @@
     bne     @L1
 
 @out:
+    lda     RESB
+    cmp     #03
+    bne     @error ; Missing digit
+    nop     ; For reloc binary bug
     ; TR4,TR5,TR6,TR7 contains digit
     jsr     @compute
 
     lda     TR4
     beq     @error ; First_byte_is_zero
 
-    lda     RESB
-    cmp     #03
-    beq     @error ; Missing digit
-    nop     ; For reloc binary bug
+
     ldx     #$00
     rts
 
@@ -101,12 +102,10 @@
     sec
     sbc     #$30
     sta     TR0
-
     jsr     @mult10
     ldx     RESB
     sta     TR4,x
     lda     TR1
-
     jmp     @one_digit_entry
 
 
@@ -147,7 +146,6 @@
     adc     RESB+1
     adc     RESB+1
     rts
-
 
 @under_10:
     sec
