@@ -52,9 +52,9 @@
     beq     @error ; First_byte_is_zero
 
     lda     RESB
-    cmp     #04
+    cmp     #03
     beq     @error ; Missing digit
-
+    nop     ; For reloc binary bug
     ldx     #$00
     rts
 
