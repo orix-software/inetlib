@@ -18,20 +18,28 @@
     ; A & X contains str
     jsr     inet_aton
 
-    sty     RESB
+    cpx     #$01
+    beq     @return_error
+
+    lda     TR7
     ldy     #$00
     sta     (ptr1),y
     iny
-    txa
+    lda     TR6
     sta     (ptr1),y
     iny
-    lda     RESB
+    lda     TR5
     sta     (ptr1),y
     iny
-    lda     RES
+    lda     TR4
     sta     (ptr1),y
 
     lda     #$01
+
+    rts
+
+@return_error:
+    lda     #$FF
 
     rts
 .endproc

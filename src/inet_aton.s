@@ -14,13 +14,16 @@
     ;;@returnsX Second byte
     ;;@returnsY Third byte
     ;;@returnMEM_RES Last byte
-@me:
-    jmp     inet_aton
+
     sta     RES
     stx     RES+1
 
     ldx     #$00
     stx     RESB ; Current digit
+    stx     TR4
+    stx     TR5
+    stx     TR6
+    stx     TR7
 
     ldy     #$00
 
@@ -42,43 +45,113 @@
     bne     @L1
 
 @out:
-    rts
+    ; TR4,TR5,TR6,TR7 contains digit
+    jsr     @compute
 
-@convert:
-    cpx     #03
-    bne     @no_three_digit
-    lda     TR0
-    cmp     #'2'
-    bne     @is_not_200
+    lda     TR4
+    beq     @error ; First_byte_is_zero
 
-    stx     RESB+1
+    lda     RESB
+    cmp     #04
+    beq     @error ; Missing digit
 
-    lda     #200
-    ldx     RESB
-    sta     TR3,x
-
-    ldx     RESB+1
-    jmp     @no_three_digit
-
-@is_not_200:
-    stx     RESB+1
-
-    lda     #100
-    ldx     RESB
-    sta     TR3,x
-
-    ldx     RESB+1
-
-@no_three_digit:
-    cpx     #02
-    bne     @no_three_digit
+    ldx     #$00
     rts
 
 @error:
-    lda     #$FF
-    tax
-    tay
-    sta     RES
+    ldx     #$01
+    rts
+
+@convert:
+    jsr     @compute
+    ldx     #$00
+    iny
+    jmp     @L1
+
+@compute:
+    cpx     #01
+    beq     @one_digit
+
+    cpx     #02
+    beq     @two_digit
+
+    cpx     #03
+    beq     @three_digit
+    bne     @error
+
+@one_digit:
+    ldx     RESB
+    lda     TR0
+
+@one_digit_entry:
+    sec
+    sbc     #$30
+    clc
+    adc     TR4,x
+    sta     TR4,x
+    inc     RESB
+
+    rts
+
+@two_digit:
+    ;jmp     @two_digit
+    lda     TR0
+
+@two_digit_entry:
+    sec
+    sbc     #$30
+    sta     TR0
+
+    jsr     @mult10
+    ldx     RESB
+    sta     TR4,x
+    lda     TR1
+
+    jmp     @one_digit_entry
+
+
+@three_digit:
+    lda     TR0
+    cmp     #'2'
+    beq     @is_200
+
+    lda     #100
+
+@three_digit_entry:
+    ldx     RESB
+    sta     TR4,x
+
+    lda     TR1
+    sec
+    sbc     #$30
+    sta     TR0
+    jsr     @mult10
+    ldx     RESB
+    clc
+    adc     TR4,x
+    sta     TR4,x
+
+    lda     TR2
+    jmp     @one_digit_entry
+
+
+@is_200:
+    lda     #200
+    bne     @three_digit_entry
+
+@mult10:
+    asl     ;*2
+    sta     RESB+1
+    adc     RESB+1
+    adc     RESB+1
+    adc     RESB+1
+    adc     RESB+1
+    rts
+
+
+@under_10:
+    sec
+    sbc     #$30
     rts
 
 .endproc
