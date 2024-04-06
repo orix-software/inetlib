@@ -9,7 +9,6 @@
     ;;@modifyMEM_RESB
     ;;@modifyMEM_RES
     ;;@modifyMEM_TR0
-    ;;@modifyMEM_TR3
     ;;@returnsX X = 1 error, is not an ip
     ;;@returnsMEM_TR4 First byte
     ;;@returnsMEM_TR5 Second byte
@@ -105,7 +104,6 @@
     rts
 
 @two_digit:
-    ;jmp     @two_digit
     lda     TR0
 
 @two_digit_entry:
