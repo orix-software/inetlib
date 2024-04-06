@@ -9,6 +9,9 @@
     ;;@modifyMEM_RESB
     ;;@modifyMEM_RES
     ;;@modifyMEM_TR0
+    ;;@modifyMEM_TR1 ; TR0 indexed
+    ;;@modifyMEM_TR2 ; TR0 indexed
+    ;;@modifyMEM_TR3 ; TR0 indexed
     ;;@returnsX X = 1 error, is not an ip
     ;;@returnsMEM_TR4 First byte
     ;;@returnsMEM_TR5 Second byte
@@ -64,7 +67,6 @@
     lda     TR4
     beq     @error ; First_byte_is_zero
 
-
     ldx     #$00
     rts
 
@@ -116,7 +118,6 @@
     lda     TR1
     jmp     @one_digit_entry
 
-
 @three_digit:
     lda     TR0
     cmp     #'2'
@@ -140,7 +141,6 @@
 
     lda     TR2
     jmp     @one_digit_entry
-
 
 @is_200:
     lda     #200

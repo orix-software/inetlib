@@ -16,6 +16,9 @@ Convert ip str to int 32, returns 255 255 255 255 if error
 * RESB
 * RES
 * TR0
+* TR1; TR0 indexed
+* TR2; TR0 indexed
+* TR3; TR0 indexed
 
 ***Returns***
 
