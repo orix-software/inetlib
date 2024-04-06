@@ -22,13 +22,13 @@ Convert ip str to int 32, returns 255 255 255 255 if error
 
 * X Register : X = 1 error, is not an ip
 
+* TR4 : First byte
 
+* TR5 : Second byte
 
+* TR6 : Third byte
 
-
-
-
-
+* TR7 : Last byte
 
 
 ***Example***

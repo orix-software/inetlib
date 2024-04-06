@@ -159,6 +159,15 @@ for line in fileinput.input():
                 if inst[0] == ';;@inputY':
                     line_out = line_out + '* Y Register : '+inst[1] +' ' + ' '.join(inst[2:])
 
+            elif ';;@returnsMEM_' in inst[0]:
+                if def_return_found == False:
+                    line_out = '\n***Returns***\n\n'
+                    def_return_found = True
+                memory = inst[0] .split('_')
+                line_out = line_out + '* ' +  memory[1] +' : '+ inst[1] +' ' + ' '.join(inst[2:])
+
+                line_out = line_out + '\n'
+
             elif ';;@returns' in inst[0]:
                 if def_return_found == False:
                     line_out = '\n***Returns***\n\n'
