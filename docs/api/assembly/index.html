@@ -531,7 +531,18 @@
 <li>TR0</li>
 <li>TR3</li>
 </ul>
-<p><strong><em>Returns</em></strong></p></div>
+<p><strong><em>Returns</em></strong></p>
+<ul>
+<li>X Register : X = 1 error, is not an ip</li>
+</ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="o">&lt;</span><span class="n">ip_str</span>
+<span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="o">&gt;</span><span class="n">ip_str</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">inet_aton</span>
+<span class="w"> </span><span class="k">rts</span>
+<span class="nl">ip_str:</span>
+<span class="w"> </span><span class="kp">.asciiz</span><span class="w"> </span><span class="mi">192</span><span class="kp">.168.1.1</span>
+</code></pre></div></div>
 
   <hr>
 <div class="md-source-file">

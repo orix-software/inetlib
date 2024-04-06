@@ -10,10 +10,20 @@
     ;;@modifyMEM_RES
     ;;@modifyMEM_TR0
     ;;@modifyMEM_TR3
+    ;;@returnsX X = 1 error, is not an ip
     ;;@returnsMEM_TR4 First byte
     ;;@returnsMEM_TR5 Second byte
     ;;@returnsMEM_TR6 Third byte
     ;;@returnsMEM_TR7 Last byte
+    ;;@```ca65
+    ;;@`  lda       #<ip_str
+    ;;@`  ldx       #>ip_str
+    ;;@`  jsr       inet_aton
+    ;;@`  rts
+    ;;@`ip_str:
+    ;;@` .asciiz 192.168.1.1
+    ;;@```
+
 
     sta     RES
     stx     RES+1

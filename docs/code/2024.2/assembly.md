@@ -20,6 +20,7 @@ Convert ip str to int 32, returns 255 255 255 255 if error
 
 ***Returns***
 
+* X Register : X = 1 error, is not an ip
 
 
 
@@ -27,6 +28,19 @@ Convert ip str to int 32, returns 255 255 255 255 if error
 
 
 
+
+
+
+***Example***
+
+```ca65
+ lda #<ip_str
+ ldx #>ip_str
+ jsr inet_aton
+ rts
+ip_str:
+ .asciiz 192.168.1.1
+```
 
 
 
