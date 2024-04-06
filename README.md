@@ -1,6 +1,10 @@
 # inetlib
 
-##Documentation
+Provides :
+
+* inet_aton
+
+## Documentation
 
 ## Repository
 

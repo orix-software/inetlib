@@ -16,9 +16,8 @@ endif
 all: init $(SOURCES8) $(OBJECTS8) tests
 
 tests:
-	# cl65 -o 1000 -ttelestrat src/file.c --start-addr \$800
-	# cl65 -o 1256 -ttelestrat src/file.c --start-addr \$900
-	#@$(CC) -ttelestrat --include-dir src/include tests/inet_aton.c inet.lib -o inetaton
+	cl65 -o 1000 -ttelestrat tests/inet_aton.c inet.lib --start-addr \$800
+	cl65 -o 1256 -ttelestrat tests/inet_aton.c inet.lib --start-addr \$900
 	dependencies/orix-sdk/bin/relocbin.py3 -o inetaton -2 1000 1256
 
 init: $(SOURCE)

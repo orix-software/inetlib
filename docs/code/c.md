@@ -1,12 +1,6 @@
 # C
 
-***Description***
-
-
-
-
-
-## inet_addr(const char *cp);
+## inet_aton(const char *cp, unsigned long *inp);
 
 
 
