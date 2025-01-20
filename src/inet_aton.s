@@ -3,7 +3,7 @@
 .export inet_aton
 
 .proc inet_aton
-    ;;@brief Convert ip str to int 32, returns 255 255 255 255 if error
+    ;;@brief Convert ip str to int 32 (net work notation : big endian), returns 255 255 255 255 if error
     ;;@inputA Low addr of string
     ;;@inputX high addr
     ;;@modifyMEM_RESB
@@ -26,12 +26,13 @@
     ;;@` .asciiz 192.168.1.1
     ;;@```
 
-
+    ; Store the ptr of the string
     sta     RES
     stx     RES+1
 
     ldx     #$00
     stx     RESB ; Current digit
+    ; Clear TR4 to TR7 to 0
     stx     TR4
     stx     TR5
     stx     TR6

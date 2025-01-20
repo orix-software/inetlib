@@ -6,12 +6,13 @@
 void display(int32_t inp, unsigned char error, char *str) {
     if (error == 1)
         printf("IP : %d.%d.%d.%d\n", (unsigned char)(inp >> 24), (unsigned char)(inp >> 16) & 0xff, (unsigned char)(inp >> 8) & 0xff, (unsigned char)(inp & 0xff));
+        printf("%d" ,inp[0]);
     else
         printf("Invalid conversion for : %s\n", str);
 }
 
 int main() {
-    uint32_t inp=0;
+    uint32_t inp = 0;
     uint8_t error=0;
 
     error = inet_aton("1.2.3.4", &inp);
