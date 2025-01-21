@@ -147,7 +147,7 @@ jobs:
             export PATH=$PATH:../bpm/src/:${GITHUB_WORKSPACE}/../cc65/bin
             chmod 755 ../bpm/src/bpm
             echo "/home/runner/work/file/cc65/bin" >> $GITHUB_PATH
-            echo "Bpm version :"
+            echo "Force update"
             bpm --force-update --replace-for-new-project -V
             bpm  --force-update  -V
             echo Using bpm ...
