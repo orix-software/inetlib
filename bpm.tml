@@ -1,5 +1,5 @@
 [package]
-name = "inet"
+name = "inetlib"
 version = "2025.1"
 authors = [ "nobody@nobody.fr",]
 license = "MIT OR Apache-2.0"
@@ -8,7 +8,7 @@ cpu = "6502"
 readme = ""
 repository = ""
 documentation = ""
-description = ""
+description = "Provide inet_aton"
 homepage = ""
 buildfolder = "build"
 packagetype = "tgz"
@@ -17,3 +17,5 @@ oricutron_replace_autoboot_run = "True"
 templatecode = ""
 
 [dependencies]
+
+[srcfolders]
